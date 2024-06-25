@@ -1,5 +1,4 @@
 steps:
-  # Step 1: Build the Docker image
   - name: 'python:3.9-slim'
     entrypoint: 'bash'
     args:
@@ -8,12 +7,13 @@ steps:
         pip install gradio
         python main.py
 
-# Optional: You can define the timeout for the build to make sure it does not exceed the expected time.
+# Define the timeout for the build
 timeout: '1200s'  # This sets the timeout to 20 minutes
 
-# You can also specify images to be pushed to Google Container Registry or Artifact Registry
+# Specify images to be pushed to Google Container Registry or Artifact Registry
 images:
   - 'gcr.io/$PROJECT_ID/my-python-app'
-  options:
-  logging: CLOUD_LOGGING_ONLY
 
+# Configuration options for the build
+options:
+  logging: CLOUD_LOGGING_ONLY
